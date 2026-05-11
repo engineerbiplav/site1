@@ -876,7 +876,7 @@
             <circle cx="18" cy="19" r="2" stroke="currentColor" stroke-width="1.8" />
             <path d="m8 13.5 8 4M8 10.5l8-4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
           </svg>
-          Share Card
+          Share
         </button>
         <button class="qr-btn qr-btn-close" onclick="closeQR()">
           <svg viewBox="0 0 24 24" fill="none" width="18" height="18">
@@ -890,7 +890,7 @@
 
   <script>
     function saveContact() {
-      const vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:Hem Raj Dhakal\nN:Dhakal;Hem Raj;;;\nORG:IME Group\nTITLE:Founder and Managing Director\nTEL;TYPE=CELL:+977951023976\nEMAIL:ramu@imeholding.com\nURL:https://imegroup.com.np\nADR;TYPE=WORK:;;Kathmandu;;Nepal\nEND:VCARD`;
+      const vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:Hem Raj Dhakal\nN:Dhakal;Hem Raj;;;\nORG:IME Group\nTITLE:Founder and Managing Director\nTEL;TYPE=CELL:+9779851023976\nEMAIL:ramu@imeholding.com\nURL:https://imegroup.com.np\nADR;TYPE=WORK:;;Kathmandu;;Nepal\nEND:VCARD`;
       const blob = new Blob([vcard], { type: 'text/vcard' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
