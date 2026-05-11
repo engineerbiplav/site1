@@ -686,7 +686,7 @@
 
     <!-- ACTION ROW -->
     <div class="actions-row">
-      <a class="action-btn" href="tel:+9779800000000">
+      <a class="action-btn" href="tel:+9779851023976">
         <div class="action-icon ic-call">
           <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
             <path
@@ -696,7 +696,7 @@
         </div>
         <span class="action-label">Call</span>
       </a>
-      <a class="action-btn" href="https://maps.google.com/?q=Kathmandu,Nepal" target="_blank">
+      <a class="action-btn" href="https://maps.app.goo.gl/prqYx8FFvmqhViMv6" target="_blank">
         <div class="action-icon ic-locate">
           <svg viewBox="0 0 24 24" fill="none">
             <path
@@ -725,7 +725,7 @@
         </div>
         <span class="action-label">Email</span>
       </a>
-      <a class="action-btn" href="https://imegroup.com.np" target="_blank">
+      <a class="action-btn" href="https://hemrajdhakal.com.np" target="_blank">
         <div class="action-icon ic-web">
           <svg viewBox="0 0 24 24" fill="none">
             <circle cx="12" cy="12" r="9" stroke="white" stroke-width="1.8" />
@@ -754,10 +754,10 @@
           <div class="contact-val">+977 9851023976</div>
         </div>
         <button class="share-btn"
-          onclick="navigator.share ? navigator.share({title:'Hem Raj Dhakal',text:'+977 98-00000000'}) : null; event.preventDefault();">Share</button>
+          onclick="navigator.share ? navigator.share({title:'Hem Raj Dhakal',text:'+977-9851023976'}) : null; event.preventDefault();">Share</button>
       </a>
 
-      <a class="contact-row" href="mailto:hemraj@dhakalenterprises.com" style="text-decoration:none;">
+      <a class="contact-row" href="mailto:ramu@imeholding.com" style="text-decoration:none;">
         <div class="contact-icon ci-email">
           <svg viewBox="0 0 24 24" fill="none">
             <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z" stroke="#2563eb"
@@ -771,7 +771,7 @@
         </div>
       </a>
 
-      <a class="contact-row" href="https://maps.google.com/?q=Kathmandu,Nepal" target="_blank"
+      <a class="contact-row" href="https://maps.app.goo.gl/prqYx8FFvmqhViMv6" target="_blank"
         style="text-decoration:none;">
         <div class="contact-icon ci-loc">
           <svg viewBox="0 0 24 24" fill="none">
@@ -782,13 +782,13 @@
         </div>
         <div class="contact-info">
           <div class="contact-type">Address</div>
-          <div class="contact-val">Kathmandu, Nepal</div>
+          <div class="contact-val">IME Complex, Kathmandu, Nepal</div>
         </div>
       </a>
     </div>
 
     <!-- COMPANY CARD -->
-    <a href="https://imegroup.com.np">
+    <a href="https://imegroup.com.np" target="_blank">
       <div class="company-card">
         <!-- <div class="company-name">IME Group</div> -->
         <img src="https://imegroup.com.np/wp-content/uploads/2023/01/logo-inverse.svg" alt="" style="max-height: 80px;">
@@ -890,7 +890,7 @@
 
   <script>
     function saveContact() {
-      const vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:Hem Raj Dhakal\nN:Dhakal;Hem Raj;;;\nORG:Dhakal Enterprises\nTITLE:Business Professional & Entrepreneur\nTEL;TYPE=CELL:+9779800000000\nEMAIL:hemraj@dhakalenterprises.com\nURL:https://dhakalenterprises.com\nADR;TYPE=WORK:;;Kathmandu;;Nepal\nEND:VCARD`;
+      const vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:Hem Raj Dhakal\nN:Dhakal;Hem Raj;;;\nORG:IME Group\nTITLE:Founder and Managing Director\nTEL;TYPE=CELL:+977951023976\nEMAIL:ramu@imeholding.com\nURL:https://imegroup.com.np\nADR;TYPE=WORK:;;Kathmandu;;Nepal\nEND:VCARD`;
       const blob = new Blob([vcard], { type: 'text/vcard' });
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
@@ -904,7 +904,7 @@
       if (navigator.share) {
         navigator.share({
           title: 'Hem Raj Dhakal',
-          text: 'Business Professional & Entrepreneur — Dhakal Enterprises',
+          text: 'Founder & Managing Director — IME Group',
           url: window.location.href
         });
       } else {
