@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#ffffff" />
+  <meta name="description" content="Select a company to open Hem Raj Dhakal's digital business card." />
+  <title>Digital Card Collection | Hem Raj Dhakal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --text: #192337;
+      --muted: #64748b;
+      --accent: #d91e36;
+      --accent-hover: #b7192d;
+      --border: #e4e9f1;
+      --surface: #fff;
+      --focus: rgba(217,30,54,.17);
+    }
+    * { box-sizing: border-box; }
+    body {
+      min-height: 100vh; min-height: 100dvh; margin: 0;
+      display: grid; place-items: center;
+      padding: 28px 18px;
+      font-family: 'DM Sans', system-ui, sans-serif;
+      color: var(--text);
+      background: radial-gradient(ellipse at 10% 5%, #fff0f2 0, transparent 36%),
+                  radial-gradient(ellipse at 90% 95%, #f0f4fc 0, transparent 40%),
+                  #f8fafc;
+    }
+    .panel {
+      width: min(100%, 460px); padding: clamp(28px, 6vw, 44px);
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 24px; box-shadow: 0 20px 65px rgba(25,35,55,.07);
+      text-align: center;
+    }
+    .profile-photo {
+      display: block; width: 62px; height: 62px; margin: 0 auto 22px;
+      border-radius: 50%; object-fit: cover; object-position: center;
+      border: 3px solid white;
+      box-shadow: 0 0 0 2px var(--accent), 0 4px 14px rgba(25,35,55,.12);
+    }
+    h1 { margin: 0 0 15px; font: 600 clamp(25px, 5vw, 31px)/1.26 'Playfair Display', Georgia, serif; }
+    .intro { margin: 0 auto 29px; color: var(--muted); line-height: 1.7; font-size: 14px; max-width: 340px; }
+    .form-label { display: block; margin-bottom: 10px; text-align: left; font-size: 13px; font-weight: 700; }
+    select {
+      width: 100%; min-height: 52px; padding: 0 42px 0 16px;
+      appearance: none; border: 1.5px solid var(--border); border-radius: 12px;
+      background-color: white;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%2364748b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
+      background-position: right 15px center; background-repeat: no-repeat;
+      font: 500 14px 'DM Sans', system-ui, sans-serif; color: #000000;
+      cursor: pointer;
+    }
+    select option { color: #000000; background-color: #ffffff; font-weight: 500; }
+    select:invalid { color: #8090a5; }
+    select:focus-visible, button:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; border-color: var(--accent); }
+    button {
+      width: 100%; min-height: 52px; margin-top: 16px;
+      border: 0; border-radius: 12px;
+      background: var(--accent); color: white;
+      font: 700 14px 'DM Sans', system-ui, sans-serif;
+      cursor: pointer; transition: background .18s, transform .18s, opacity .18s;
+    }
+    button:not(:disabled):hover { background: var(--accent-hover); transform: translateY(-1px); }
+    button:disabled { opacity: .4; cursor: not-allowed; }
+    .arrow { margin-left: 7px; font-size: 17px; vertical-align: -1px; }
+    .note { margin: 19px 0 0; color: #8995a8; font-size: 12px; }
+    @media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; } }
+  </style>
+</head>
+<body>
+  <main class="panel">
+    <img class="profile-photo" src="https://imegroup.com.np/wp-content/themes/yootheme/cache/b6/hem-raj-dhakal-b67db8c6.jpeg" alt="Portrait of Hem Raj Dhakal" width="62" height="62" />
+    <h1>Digital card collection of Hem Raj Dhakal.</h1>
+    <p class="intro">Please select the company from the dropdown below whose card you want to share.</p>
+    <form id="card-form" action="https://hemrajdhakal.com.np" method="get" target="_blank">
+      <label class="form-label" for="company">Select company</label>
+      <select id="company" name="company" required>
+        <option value="" selected disabled>Select a company</option>
+        <option value="https://hemrajdhakal.com.np/card-imegroup">IME Group</option>
+        <option value="https://hemrajdhakal.com.np/card-dishhome">Dishhome</option>
+        <option value="https://hemrajdhakal.com.np/card-igi_prudential">IGI Prudential</option>
+        <option value="https://hemrajdhakal.com.np/card-chandragiri">Chandragiri Hills</option>
+      </select>
+      <button type="submit" id="proceed" disabled>Proceed <span class="arrow" aria-hidden="true">↗</span></button>
+    </form>
+    <p class="note">Your selected digital card will open in a new tab.</p>
+  </main>
+  <script>
+    (() => {
+      const form = document.getElementById('card-form');
+      const company = document.getElementById('company');
+      const proceed = document.getElementById('proceed');
+      const urls = new Set(Array.from(company.options).map(option => option.value).filter(Boolean));
+      company.addEventListener('change', () => { proceed.disabled = !urls.has(company.value); });
+      form.addEventListener('submit', event => {
+        event.preventDefault();
+        if (!urls.has(company.value)) return;
+        // Directly triggered by user submit, so browsers normally permit the new tab.
+        window.open(company.value, '_blank', 'noopener,noreferrer');
+      });
+    })();
+  </script>
+</body>
+</html>
