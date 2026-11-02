@@ -9,657 +9,282 @@
     href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=DM+Sans:wght@300;400;500&display=swap"
     rel="stylesheet">
   <style>
-    *,
-    *::before,
-    *::after {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
 
-    :root {
-    /* IME brand colors */
-    --peach: #E61E38;
-    --sage: #C8102E;
-    --lavender: #990B22;
-    --sky: #E61E38;
-
-    /* Background and text */
-    --cream: #FFF7F8;
-    --ink: #111827;
-    --muted: #6B7280;
-
-    /* Cards and borders */
-    --card: rgba(255, 255, 255, 0.95);
-    --border: #FFE4E6;
-
-    /* Shadows */
-    --shadow: 0 4px 24px rgba(200, 16, 46, 0.08);
-    --shadow-btn: 0 4px 14px rgba(200, 16, 46, 0.28);
+/* ============================================================
+   IME Group Digital Business Card
+   Design tokens — change these to update the complete theme.
+   ============================================================ */
+:root {
+  --brand-red: #e71936;
+  --brand-red-dark: #ad092b;
+  --brand-red-soft: #fff0f2;
+  --background: #fff8f9;
+  --surface: #ffffff;
+  --text: #101d33;
+  --text-muted: #61758f;
+  --text-subtle: #94a5bd;
+  --border: #ffe3e8;
+  --shadow-card: 0 14px 34px rgba(133, 28, 48, .07);
+  --shadow-red: 0 9px 17px rgba(202, 15, 48, .23);
+  --radius-card: 36px;
 }
 
-    body {
-      font-family: 'DM Sans', sans-serif;
-      background: 	#FFF7F8;
-      min-height: 100vh;
-      display: flex;
-      justify-content: center;
-      align-items: flex-start;
-      padding: 0;
-      overflow-x: hidden;
-    }
-
-    .bg-blob {
-      position: fixed;
-      border-radius: 50%;
-      filter: blur(60px);
-      opacity: 0.55;
-      pointer-events: none;
-      z-index: 0;
-    }
-
-    .blob1 {
-      width: 340px;
-      height: 340px;
-      background: #ffe4e6;
-      top: -80px;
-      left: -80px;
-    }
-
-    .blob2 {
-      width: 260px;
-      height: 260px;
-      background: #fecdd3;
-      top: 200px;
-      right: -60px;
-    }
-
-    .blob3 {
-      width: 300px;
-      height: 300px;
-      background: #ffe4e6;
-      bottom: 100px;
-      left: -60px;
-    }
-
-    .blob4 {
-      width: 220px;
-      height: 220px;
-      background: #fff1f2;
-      bottom: -60px;
-      right: -40px;
-    }
-
-    .page {
-      position: relative;
-      z-index: 1;
-      width: 100%;
-      max-width: 420px;
-      padding: 0 0 48px;
-    }
-
-    /* HERO */
-    .hero {
-      position: relative;
-      padding: 52px 24px 28px;
-      text-align: center;
-    }
-
-    .avatar-wrap {
-      position: relative;
-      display: inline-block;
-      margin-bottom: 18px;
-    }
-
-    .avatar-ring {
-      width: 180px;
-      height: 180px;
-      border-radius: 50%;
-      padding: 3px;
-      background: linear-gradient(135deg, #E61E38, #C8102E, #990B22);
-      box-shadow: 0 8px 32px rgba(200, 16, 46, 0.18);
-    }
-
-    .avatar-inner {
-      width: 100%;
-      height: 100%;
-      border-radius: 50%;
-      overflow: hidden;
-      background: #e0d4f5;
-      display: flex;
-      object-fit: cover;
-      align-items: center;
-      justify-content: center;
-      font-family: 'Playfair Display', serif;
-      font-size: 38px;
-      font-weight: 600;
-      color: #6b3fa0;
-      letter-spacing: -1px;
-      border: 3px solid white;
-    }
-
-    .nfc-badge svg {
-      width: 14px;
-      height: 14px;
-    }
-
-    .hero-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 26px;
-      font-weight: 600;
-      color: var(--ink);
-      letter-spacing: -0.3px;
-      margin-bottom: 5px;
-    }
-
-    .hero-title {
-      font-size: 13.5px;
-      font-weight: 400;
-      color: var(--muted);
-      letter-spacing: 0.6px;
-      text-transform: uppercase;
-      margin-bottom: 10px;
-    }
-
-    .hero-company {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: rgba(124, 58, 237, 0.1);
-      color: #6d28d9;
-      font-size: 13px;
-      font-weight: 500;
-      padding: 5px 14px;
-      border-radius: 20px;
-    }
-
-    /* ACTION ICONS ROW */
-    .actions-row {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      padding: 18px 24px 0;
-    }
-
-    .action-btn {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 5px;
-      text-decoration: none;
-      cursor: pointer;
-    }
-
-    .action-icon {
-      width: 50px;
-      height: 50px;
-      border-radius: 16px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      box-shadow: var(--shadow-btn);
-      transition: transform 0.15s ease;
-    }
-
-    .action-icon:active,
-    .action-icon:hover {
-      transform: scale(0.93);
-    }
-
-    .action-icon svg {
-      width: 22px;
-      height: 22px;
-    }
-
-    .ic-call {
-      background: linear-gradient(135deg, #4ade80, #16a34a);
-    }
-
-    .ic-locate {
-      background: linear-gradient(135deg, #f87171, #dc2626);
-    }
-
-    .ic-whatsapp {
-      background: linear-gradient(135deg, #4ade80, #059669);
-    }
-
-    .ic-email {
-      background: linear-gradient(135deg, #60a5fa, #2563eb);
-    }
-
-    .ic-web {
-      background: linear-gradient(135deg, #a78bfa, #7c3aed);
-    }
-
-    .action-label {
-      font-size: 10.5px;
-      color: var(--muted);
-      font-weight: 400;
-    }
-
-    /* CARDS */
-    .card {
-      background: var(--card);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border: 1px solid var(--border);
-      border-radius: 20px;
-      box-shadow: var(--shadow);
-      margin: 18px 18px 0;
-      padding: 18px 20px;
-    }
-
-    .card-label {
-      font-size: 10px;
-      font-weight: 500;
-      letter-spacing: 1px;
-      text-transform: uppercase;
-      color: #9f81d4;
-      margin-bottom: 14px;
-    }
-
-    .contact-row {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      padding: 10px 0;
-      border-bottom: 1px solid rgba(120, 80, 200, 0.08);
-      text-decoration: none;
-    }
-
-    .contact-row:last-child {
-      border-bottom: none;
-      padding-bottom: 0;
-    }
-
-    .contact-row:first-of-type {
-      padding-top: 0;
-    }
-
-    .contact-icon {
-      width: 36px;
-      height: 36px;
-      border-radius: 10px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-
-    .contact-icon svg {
-      width: 17px;
-      height: 17px;
-    }
-
-    .ci-phone {
-      background: #ecfdf5;
-    }
-
-    .ci-email {
-      background: #eff6ff;
-    }
-
-    .ci-loc {
-      background: #fef2f2;
-    }
-
-    .contact-info {
-      flex: 1;
-    }
-
-    .contact-type {
-      font-size: 10.5px;
-      color: var(--muted);
-      margin-bottom: 1px;
-    }
-
-    .contact-val {
-      font-size: 14px;
-      font-weight: 500;
-      color: var(--ink);
-    }
-
-    .share-btn {
-      font-size: 11.5px;
-      font-weight: 500;
-      color: #7c3aed;
-      background: rgba(124, 58, 237, 0.09);
-      border: none;
-      border-radius: 8px;
-      padding: 5px 10px;
-      cursor: pointer;
-      transition: background 0.15s;
-      text-decoration: none;
-    }
-
-    .share-btn:hover {
-      background: rgba(124, 58, 237, 0.15);
-    }
-
-    /* COMPANY CARD */
-    .company-card {
-      background: linear-gradient(135deg, #7c3aed 0%, #4f46e5 60%, #2563eb 100%);
-      border-radius: 20px;
-      margin: 18px 18px 0;
-      padding: 22px 22px;
-      box-shadow: 0 8px 28px rgba(124, 58, 237, 0.3);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .company-card::before {
-      content: '';
-      position: absolute;
-      width: 200px;
-      height: 200px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.06);
-      top: -60px;
-      right: -40px;
-    }
-
-    .company-card::after {
-      content: '';
-      position: absolute;
-      width: 120px;
-      height: 120px;
-      border-radius: 50%;
-      background: rgba(255, 255, 255, 0.05);
-      bottom: -30px;
-      left: 20px;
-    }
-
-    .company-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 20px;
-      font-weight: 600;
-      color: white;
-      margin-bottom: 4px;
-      position: relative;
-      z-index: 1;
-    }
-
-    .company-tagline {
-      font-size: 12.5px;
-      color: rgba(255, 255, 255, 0.72);
-      font-weight: 300;
-      position: relative;
-      z-index: 1;
-    }
-
-    /* BIG BUTTONS */
-    .btn-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 12px;
-      margin: 18px 18px 0;
-    }
-
-    .btn-big {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 7px;
-      padding: 16px 10px;
-      border-radius: 16px;
-      border: none;
-      cursor: pointer;
-      text-decoration: none;
-      transition: transform 0.15s;
-      box-shadow: var(--shadow-btn);
-    }
-
-    .btn-big:active {
-      transform: scale(0.96);
-    }
-
-    .btn-save {
-      background: linear-gradient(135deg, #4ade80, #16a34a);
-      grid-column: 1 / -1;
-    }
-
-    .btn-share-lg {
-      background: var(--card);
-      border: 1px solid var(--border);
-    }
-
-    .btn-qr {
-      background: var(--card);
-      border: 1px solid var(--border);
-    }
-
-    .btn-big svg {
-      width: 22px;
-      height: 22px;
-    }
-
-    .btn-big span {
-      font-size: 13px;
-      font-weight: 500;
-    }
-
-    .btn-save span {
-      color: white;
-    }
-
-    .btn-share-lg span,
-    .btn-qr span {
-      color: var(--ink);
-    }
-
-    /* SOCIAL */
-    .social-row {
-      display: flex;
-      justify-content: center;
-      gap: 14px;
-      padding: 22px 24px 8px;
-    }
-
-    .social-icon {
-      width: 42px;
-      height: 42px;
-      border-radius: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      text-decoration: none;
-      box-shadow: var(--shadow-btn);
-      transition: transform 0.15s;
-      background: var(--card);
-      border: 1px solid var(--border);
-    }
-
-    .social-icon:hover,
-    .social-icon:active {
-      transform: scale(0.92);
-    }
-
-    .social-icon svg {
-      width: 20px;
-      height: 20px;
-    }
-
-    .footer-note {
-      text-align: center;
-      font-size: 11px;
-      color: var(--muted);
-      padding: 14px 24px 0;
-      opacity: 0.7;
-    }
-
-    /* Animations */
-    @keyframes fadeUp {
-      from {
-        opacity: 0;
-        transform: translateY(16px);
-      }
-
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
-    }
-
-    .hero {
-      animation: fadeUp 0.55s ease both;
-    }
-
-    .actions-row {
-      animation: fadeUp 0.55s 0.1s ease both;
-    }
-
-    .card:nth-of-type(1) {
-      animation: fadeUp 0.55s 0.18s ease both;
-    }
-
-    .company-card {
-      animation: fadeUp 0.55s 0.26s ease both;
-    }
-
-    .btn-row {
-      animation: fadeUp 0.55s 0.32s ease both;
-    }
-
-    .social-row {
-      animation: fadeUp 0.55s 0.38s ease both;
-    }
-
-    /* QR MODAL */
-    .qr-overlay {
-      position: fixed;
-      inset: 0;
-      z-index: 999;
-      background: rgba(20, 15, 40, 0.55);
-      backdrop-filter: blur(6px);
-      -webkit-backdrop-filter: blur(6px);
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      opacity: 0;
-      pointer-events: none;
-      transition: opacity 0.3s ease;
-    }
-
-    .qr-overlay.active {
-      opacity: 1;
-      pointer-events: all;
-    }
-
-    .qr-sheet {
-      background: #fff;
-      border-radius: 28px 28px 0 0;
-      width: 100%;
-      max-width: 420px;
-      padding: 12px 28px 40px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0;
-      transform: translateY(100%);
-      transition: transform 0.35s cubic-bezier(0.34, 1.3, 0.64, 1);
-      box-shadow: 0 -8px 40px rgba(80, 60, 120, 0.18);
-    }
-
-    .qr-overlay.active .qr-sheet {
-      transform: translateY(0);
-    }
-
-    .qr-handle {
-      width: 40px;
-      height: 4px;
-      border-radius: 2px;
-      background: #e0d9f0;
-      margin-bottom: 20px;
-    }
-
-    .qr-title {
-      font-family: 'Playfair Display', serif;
-      font-size: 22px;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 4px;
-    }
-
-    .qr-subtitle {
-      font-size: 13px;
-      color: var(--muted);
-      margin-bottom: 24px;
-    }
-
-    .qr-frame {
-      width: 240px;
-      height: 240px;
-      border-radius: 20px;
-      background: #fff;
-      padding: 10px;
-      box-shadow: 0 4px 28px rgba(120, 80, 200, 0.15), 0 0 0 1.5px rgba(124, 58, 237, 0.12);
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin-bottom: 20px;
-    }
-
-    .qr-frame img {
-      width: 220px;
-      height: 220px;
-      object-fit: contain;
-      border-radius: 12px;
-      display: block;
-    }
-
-    .qr-name {
-      font-family: 'Playfair Display', serif;
-      font-size: 17px;
-      font-weight: 600;
-      color: var(--ink);
-      margin-bottom: 3px;
-    }
-
-    .qr-role {
-      font-size: 12.5px;
-      color: var(--muted);
-      margin-bottom: 24px;
-      text-align: center;
-    }
-
-    .qr-actions {
-      display: flex;
-      gap: 12px;
-      width: 100%;
-    }
-
-    .qr-btn {
-      flex: 1;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      padding: 14px 0;
-      border-radius: 16px;
-      font-family: 'DM Sans', sans-serif;
-      font-size: 14.5px;
-      font-weight: 500;
-      border: none;
-      cursor: pointer;
-      transition: transform 0.15s ease, opacity 0.15s ease;
-    }
-
-    .qr-btn:active {
-      transform: scale(0.96);
-      opacity: 0.85;
-    }
-
-    .qr-btn-share {
-      background: linear-gradient(135deg, #7c3aed, #5b21b6);
-      color: #fff;
-      box-shadow: 0 4px 16px rgba(124, 58, 237, 0.35);
-    }
-
-    .qr-btn-close {
-      background: #f0eaf8;
-      color: var(--ink);
-    }
+*, *::before, *::after { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: 'DM Sans', sans-serif;
+  background: linear-gradient(180deg, #fff0f2 0%, #fff8f9 55%, #fff 100%);
+  color: var(--text);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+button, a { -webkit-tap-highlight-color: transparent; }
+button { font: inherit; cursor: pointer; }
+a { color: inherit; }
+a:focus-visible, button:focus-visible { outline: 3px solid var(--brand-red); outline-offset: 4px; }
+
+/* Subtle background glow */
+.bg-blob { position: fixed; z-index: 0; border-radius: 50%; pointer-events: none; filter: blur(65px); opacity: .35; }
+.blob1 { width: 300px; height: 300px; top: -90px; left: -120px; background: #ffd6df; }
+.blob2 { width: 290px; height: 290px; top: 160px; right: -150px; background: #ffe0e7; }
+.blob3 { width: 250px; height: 250px; bottom: 130px; left: -130px; background: #ffe5e9; }
+.blob4 { width: 200px; height: 200px; bottom: -70px; right: -80px; background: #fff0f2; }
+.page { position: relative; z-index: 1; width: min(100%, 700px); margin: 0 auto; padding: 0 28px 74px; }
+
+/* Profile */
+.hero { text-align: center; padding: 56px 10px 22px; }
+.avatar-wrap { display: inline-block; position: relative; margin-bottom: 32px; }
+.avatar-ring {
+  width: 248px; height: 248px; padding: 6px; border-radius: 50%;
+  background: linear-gradient(135deg, #ff8b9e, var(--brand-red) 76%, #ee5266);
+  box-shadow: 0 13px 25px rgba(213, 22, 55, .19);
+}
+.avatar-inner { display: block; width: 100%; height: 100%; border-radius: 50%; object-fit: cover; object-position: center; border: 4px solid white; background: #f4edf3; }
+.avatar-wrap::after { content: '✓'; position: absolute; bottom: 6px; right: 10px; width: 47px; height: 47px; border-radius: 50%; display: grid; place-items: center; background: #d20d2e; color: white; border: 4px solid white; box-shadow: 0 4px 12px rgba(100, 0, 30, .15); font-size: 26px; font-weight: 700; }
+.hero-name { font-family: 'Playfair Display', Georgia, serif; font-size: clamp(34px, 6vw, 43px); font-weight: 600; letter-spacing: -.8px; line-height: 1.2; margin-bottom: 9px; }
+.hero-title { font-size: clamp(13px, 3.3vw, 21px); letter-spacing: 1.4px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 20px; }
+.hero-company { display: inline-flex; gap: 8px; align-items: center; background: var(--surface); color: var(--brand-red-dark); padding: 12px 23px; border: 2px solid #ffdae0; border-radius: 99px; font-size: 19px; font-weight: 500; box-shadow: 0 3px 7px rgba(171, 18, 45, .05); }
+.hero-company svg { width: 20px; height: 20px; }
+.hero-company svg path { stroke: var(--brand-red); }
+
+/* Five primary actions */
+.actions-row { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 12px; margin: 20px 0 38px; }
+.action-btn { display: flex; flex-direction: column; gap: 11px; align-items: center; min-width: 0; text-align: center; text-decoration: none; }
+.action-icon { width: min(100%, 84px); aspect-ratio: 1; border-radius: 25px; display: grid; place-items: center; background: linear-gradient(145deg, #f83d47, #d40a2e); box-shadow: var(--shadow-red); transition: transform .2s ease, box-shadow .2s ease; }
+.action-icon svg { width: 32px; height: 32px; }
+.action-btn:hover .action-icon { transform: translateY(-3px); box-shadow: 0 12px 22px rgba(202, 15, 48, .3); }
+.action-label { font-size: clamp(11px, 2.6vw, 19px); color: #435a78; white-space: nowrap; }
+
+/* Contact information */
+.card { background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius-card); padding: 35px 34px 36px; box-shadow: var(--shadow-card); }
+.card-label { color: var(--text-subtle); text-transform: uppercase; font-weight: 600; font-size: 19px; letter-spacing: .7px; margin: 0 0 29px 5px; }
+.contact-row { display: flex; align-items: center; gap: 20px; min-height: 109px; padding: 17px 0; border-bottom: 1px solid #ebeff4; text-decoration: none; }
+.contact-row:last-child { border-bottom: 0; padding-bottom: 0; }
+.contact-row:first-of-type { padding-top: 0; }
+.contact-icon { flex: none; width: 70px; height: 70px; display: grid; place-items: center; border-radius: 20px; background: var(--brand-red-soft); }
+.contact-icon svg { width: 29px; height: 29px; }
+.contact-icon svg path { stroke: var(--brand-red); }
+.contact-icon svg path[fill]:not([fill='none']) { fill: var(--brand-red); }
+.contact-info { flex: 1; min-width: 0; }
+.contact-type { color: var(--text-subtle); font-size: 18px; margin-bottom: 5px; }
+.contact-val { font-size: clamp(16px, 3.4vw, 23px); font-weight: 500; line-height: 1.35; overflow-wrap: anywhere; }
+.share-btn { flex: none; background: var(--brand-red-soft); color: var(--brand-red-dark); border: 0; border-radius: 40px; padding: 9px 19px; font-size: 18px; }
+.share-btn:hover { background: #ffdee5; }
+
+/* Company banner */
+.company-card { display: flex; align-items: center; justify-content: center; min-height: 230px; margin-top: 28px; padding: 35px; border-radius: 42px; background: linear-gradient(115deg, #ef1439, #aa0c30); box-shadow: 0 12px 23px rgba(196, 14, 48, .21); overflow: hidden; }
+.company-link { display: block; text-decoration: none; }
+.company-card img { display: block; width: min(100%, 300px); max-height: 125px; object-fit: contain; }
+
+/* Download and share actions */
+.btn-row { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 25px; margin-top: 27px; }
+.btn-big { display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 21px; min-height: 148px; padding: 20px; border: 1px solid var(--border); border-radius: 29px; background: var(--surface); color: var(--text); text-decoration: none; box-shadow: var(--shadow-card); transition: transform .2s ease; }
+.btn-big:hover { transform: translateY(-2px); }
+.btn-big svg { width: 31px; height: 31px; }
+.btn-big svg path, .btn-big svg rect, .btn-big svg circle { stroke: var(--brand-red-dark); }
+.btn-big svg path[fill]:not([fill='none']) { fill: var(--brand-red-dark); }
+.btn-big span { font-size: 20px; font-weight: 600; }
+.btn-save { grid-column: 1 / -1; min-height: 89px; flex-direction: row; gap: 14px; border: 0; color: white; background: linear-gradient(110deg, #f0153b, #aa082b); box-shadow: var(--shadow-red); }
+.btn-save svg { width: 26px; height: 26px; }
+.btn-save svg path[fill] { fill: white !important; stroke: none; }
+
+/* Social links and footer */
+.social-row { display: flex; justify-content: center; gap: 24px; margin-top: 42px; }
+.social-icon { display: grid; place-items: center; width: 75px; height: 75px; border-radius: 27px; background: white; border: 1px solid var(--border); box-shadow: var(--shadow-card); transition: transform .2s ease; }
+.social-icon:hover { transform: translateY(-3px); }
+.social-icon svg { width: 31px; height: 31px; fill: var(--brand-red-dark); }
+.footer-note { margin-top: 49px; text-align: center; font-size: 19px; color: var(--text-subtle); }
+.footer-note::first-letter { color: var(--brand-red); }
+
+/* Accessible QR bottom sheet */
+.qr-overlay { position: fixed; inset: 0; z-index: 20; display: flex; justify-content: center; align-items: flex-end; background: rgba(24, 17, 30, .55); backdrop-filter: blur(5px); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .25s, visibility .25s; }
+.qr-overlay.active { opacity: 1; visibility: visible; pointer-events: auto; }
+.qr-sheet { width: 100%; max-width: 520px; padding: 14px 28px 38px; background: white; border-radius: 30px 30px 0 0; display: flex; align-items: center; flex-direction: column; text-align: center; transform: translateY(100%); transition: transform .3s ease; box-shadow: 0 -10px 35px rgba(60, 10, 25, .15); }
+.qr-overlay.active .qr-sheet { transform: translateY(0); }
+.qr-handle { width: 44px; height: 5px; border-radius: 5px; background: #eed8de; margin-bottom: 22px; }
+.qr-title { font: 600 25px 'Playfair Display', serif; }
+.qr-subtitle { font-size: 14px; color: var(--text-muted); margin: 8px 0 22px; }
+.qr-frame { display: grid; place-items: center; width: 240px; height: 240px; padding: 10px; border: 1px solid var(--border); border-radius: 20px; box-shadow: var(--shadow-card); margin-bottom: 20px; }
+.qr-frame img { width: 218px; height: 218px; object-fit: contain; }
+#qr-placeholder { background: var(--brand-red-soft) !important; }
+#qr-placeholder svg rect, #qr-placeholder svg path { stroke: var(--brand-red) !important; }
+#qr-placeholder svg path { fill: var(--brand-red) !important; }
+.qr-name { font: 600 20px 'Playfair Display', serif; }
+.qr-role { color: var(--text-muted); font-size: 13px; margin: 8px 0 25px; }
+.qr-actions { display: flex; gap: 12px; width: 100%; }
+.qr-btn { display: flex; align-items: center; justify-content: center; gap: 8px; flex: 1; border: 0; border-radius: 14px; padding: 14px; font-weight: 600; }
+.qr-btn svg { width: 18px; height: 18px; }
+.qr-btn-share { color: white; background: var(--brand-red); }
+.qr-btn-close { color: var(--brand-red-dark); background: var(--brand-red-soft); }
+
+@media (max-width: 540px) {
+
+  .page { padding: 0 18px 48px; }
+  .hero { padding-top: 36px; }
+  .avatar-wrap { margin-bottom: 22px; }
+  .avatar-ring { width: 190px; height: 190px; }
+  .avatar-wrap::after { width: 39px; height: 39px; font-size: 21px; }
+  .hero-company { padding: 9px 17px; font-size: 15px; }
+  .actions-row { gap: 7px; margin: 18px 0 30px; }
+  .action-icon { border-radius: 18px; }
+  .action-icon svg { width: 25px; height: 25px; }
+  .card { padding: 25px 19px; border-radius: 25px; }
+  .card-label { font-size: 13px; margin-bottom: 22px; }
+  .contact-row { gap: 12px; min-height: 88px; }
+  .contact-icon { width: 49px; height: 49px; border-radius: 15px; }
+  .contact-icon svg { width: 22px; height: 22px; }
+  .contact-type { font-size: 13px; }
+  .share-btn { font-size: 13px; padding: 7px 11px; }
+  .company-card { min-height: 165px; border-radius: 27px; margin-top: 22px; }
+  .btn-row { gap: 14px; margin-top: 20px; }
+  .btn-big { min-height: 110px; border-radius: 23px; gap: 12px; }
+  .btn-big span { font-size: 15px; }
+  .btn-save { min-height: 70px; }
+  .social-row { margin-top: 30px; }
+  .social-icon { width: 59px; height: 59px; border-radius: 20px; }
+  .footer-note { font-size: 14px; margin-top: 35px; }
+}
+
+/* Compact layout: preserve original NFC card proportions on all screens. */
+:root { --radius-card: 20px; --shadow-card: 0 4px 24px rgba(133,28,48,.08); --shadow-red: 0 4px 14px rgba(202,15,48,.23); }
+.page { max-width: 420px; padding: 0px; }
+.hero { padding: 48px 12px 24px; }
+.avatar-wrap { margin-bottom: 18px; }
+.avatar-ring { width: 180px; height: 180px; padding: 4px; }
+.avatar-inner { border-width: 3px; }
+.avatar-wrap::after { width: 32px; height: 32px; bottom: 4px; right: 4px; border-width: 3px; font-size: 17px; }
+.hero-name { font-size: 28px; margin-bottom: 5px; }
+.hero-title { font-size: 13px; letter-spacing: .7px; margin-bottom: 12px; }
+.hero-company { padding: 7px 14px; font-size: 13px; border-width: 1px; }
+.hero-company svg { width: 15px; height: 15px; }
+.actions-row { gap: 8px; margin: 13px 0 24px; }
+.action-btn { gap: 7px; }
+.action-icon { width: 52px; height: 52px; border-radius: 16px; }
+.action-icon svg { width: 23px; height: 23px; }
+.action-label { font-size: 11px; }
+.card { padding: 19px 20px; border-radius: 20px; }
+.card-label { font-size: 11px; margin: 0 0 16px 0; }
+.contact-row { min-height: 65px; gap: 12px; padding: 11px 0; }
+.contact-icon { width: 38px; height: 38px; border-radius: 11px; }
+.contact-icon svg { width: 18px; height: 18px; }
+.contact-type { font-size: 11px; margin-bottom: 2px; }
+.contact-val { font-size: 14px; }
+.share-btn { font-size: 11px; padding: 6px 11px; }
+.company-card { min-height: 135px; margin-top: 18px; padding: 25px; border-radius: 22px; }
+.company-card img { max-height: 75px; max-width: 240px; }
+.btn-row { gap: 12px; margin-top: 18px; }
+.btn-big { min-height: 89px; padding: 15px 10px; gap: 8px; border-radius: 17px; }
+.btn-big svg { width: 23px; height: 23px; }
+.btn-big span { font-size: 13px; }
+.btn-save { min-height: 56px; gap: 9px; }
+.btn-save svg { width: 20px; height: 20px; }
+.social-row { gap: 14px; margin-top: 26px; }
+.social-icon { width: 44px; height: 44px; border-radius: 13px; }
+.social-icon svg { width: 21px; height: 21px; }
+.footer-note { font-size: 11px; margin-top: 26px; }
+@media (max-width: 360px) {
+  .action-icon { width: 46px; height: 46px; }
+  .action-label { font-size: 10px; }
+  .contact-val { font-size: 12px; }
+}
+
+/* Structured shell requested by user */
+.content-shell {
+  position: relative;
+  margin-top: 14px;
+  padding: 28px;
+  border: 1px solid rgba(231, 25, 54, 0.10);
+  border-radius: 28px;
+  background: linear-gradient(180deg, rgba(255, 248, 249, 0.94) 0%, rgba(255, 248, 249, 0.98) 52%, rgba(255,255,255,1) 100%);
+  box-shadow: 0 16px 34px rgba(105, 18, 34, 0.08), 0 2px 10px rgba(105, 18, 34, 0.03);
+  overflow: hidden;
+  isolation: isolate;
+}
+.content-shell::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto 0;
+  height: 245px;
+  background-image: url('https://imegroup.com.np/wp-content/uploads/2023/04/globe-map-red.svg');
+  background-repeat: no-repeat;
+  background-position: center top;
+  background-size: contain;
+  opacity: 1.16;
+  z-index: 0;
+}
+.content-shell::after {
+  content: '';
+  position: absolute;
+  inset: 110px 0 auto 0;
+  height: 165px;
+  background: linear-gradient(180deg, rgba(255,248,249,0) 0%, rgba(255,248,249,0.82) 62%, rgba(255,248,249,1) 100%);
+  z-index: 0;
+}
+.content-shell > * {
+  position: relative;
+  z-index: 1;
+}
+.hero {
+  padding-top: 38px;
+}
+.card {
+  background: rgba(255,255,255,0.96);
+}
+.company-card {
+  margin-left: 18px;
+  margin-right: 18px;
+}
+.btn-row,
+.social-row,
+.footer-note {
+  margin-left: 18px;
+  margin-right: 18px;
+}
+.footer-note {
+  margin-bottom: 0;
+}
+@media (max-width: 540px) {
+  .content-shell {
+
+    margin-top: 10px;
+    border-radius: 24px;
+    padding-bottom: 22px;
+  }
+  .content-shell::before {
+    height: 220px;
+    background-size: 145% auto;
+  }
+  .content-shell::after {
+    inset: 105px 0 auto 0;
+    height: 150px;
+  }
+  .hero {
+    padding-top: 34px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; scroll-behavior: auto !important; } }
   </style>
 </head>
 
@@ -671,6 +296,8 @@
   <div class="bg-blob blob4"></div>
 
   <div class="page">
+
+    <div class="content-shell">
 
     <!-- HERO -->
     <div class="hero">
@@ -684,7 +311,7 @@
       <div class="hero-title">Founder &amp; Managing Director</div>
       <div class="hero-company">
         <svg width="13" height="13" viewBox="0 0 20 20" fill="none">
-          <path d="M3 17V7l7-4 7 4v10M8 17v-4h4v4" stroke="#6d28d9" stroke-width="1.6" stroke-linecap="round"
+          <path d="M3 17V7l7-4 7 4v10M8 17v-4h4v4" stroke="currentColor" stroke-width="1.6" stroke-linecap="round"
             stroke-linejoin="round" />
         </svg>
         IME Group
@@ -703,7 +330,7 @@
         </div>
         <span class="action-label">Call</span>
       </a>
-      <a class="action-btn" href="https://maps.app.goo.gl/prqYx8FFvmqhViMv6" target="_blank">
+      <a class="action-btn" href="https://maps.app.goo.gl/prqYx8FFvmqhViMv6" target="_blank" rel="noopener noreferrer">
         <div class="action-icon ic-locate">
           <svg viewBox="0 0 24 24" fill="none">
             <path
@@ -713,7 +340,7 @@
         </div>
         <span class="action-label">Location</span>
       </a>
-      <a class="action-btn" href="https://wa.me/9779851023976" target="_blank">
+      <a class="action-btn" href="https://wa.me/9779851023976" target="_blank" rel="noopener noreferrer">
         <div class="action-icon ic-whatsapp">
           <svg viewBox="0 0 24 24" fill="white">
             <path
@@ -732,7 +359,7 @@
         </div>
         <span class="action-label">Email</span>
       </a>
-      <a class="action-btn" href="https://hemrajdhakal.com.np" target="_blank">
+      <a class="action-btn" href="https://hemrajdhakal.com.np" target="_blank" rel="noopener noreferrer">
         <div class="action-icon ic-web">
           <svg viewBox="0 0 24 24" fill="none">
             <circle cx="12" cy="12" r="9" stroke="white" stroke-width="1.8" />
@@ -748,43 +375,43 @@
     <div class="card">
       <div class="card-label">Contact &amp; Address</div>
 
-      <a class="contact-row" href="tel:+9779851023976" style="text-decoration:none;">
+      <div class="contact-row">
         <div class="contact-icon ci-phone">
           <svg viewBox="0 0 24 24" fill="none">
             <path
               d="M6.6 10.8a14.6 14.6 0 0 0 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10 21 3 14 3 5c0-.6.4-1 1-1h3.5c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.3 0 .7-.2 1L6.6 10.8z"
-              fill="#16a34a" />
+              fill="currentColor" />
           </svg>
         </div>
         <div class="contact-info">
           <div class="contact-type">Mobile</div>
-          <div class="contact-val">+977 9851023976</div>
+          <a class="contact-val" href="tel:+9779851023976" style="text-decoration:none;display:block;">+977 9851023976</a>
         </div>
         <button class="share-btn"
-          onclick="navigator.share ? navigator.share({title:'Hem Raj Dhakal',text:'+977-9851023976'}) : null; event.preventDefault();">Share</button>
-      </a>
+          onclick="sharePhone()" type="button">Share</button>
+      </div>
 
-      <a class="contact-row" href="mailto:ramu@imeholding.com" style="text-decoration:none;">
+      <a class="contact-row" href="mailto:ramu@imeholding.com" >
         <div class="contact-icon ci-email">
           <svg viewBox="0 0 24 24" fill="none">
-            <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z" stroke="#2563eb"
+            <path d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2z" stroke="currentColor"
               stroke-width="1.8" />
-            <path d="m2 6 10 7 10-7" stroke="#2563eb" stroke-width="1.8" stroke-linecap="round" />
+            <path d="m2 6 10 7 10-7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" />
           </svg>
         </div>
         <div class="contact-info">
           <div class="contact-type">Email</div>
-          <div class="contact-val" style="font-size:12.5px;">ramu@imeholding.com</div>
+          <div class="contact-val" >ramu@imeholding.com</div>
         </div>
       </a>
 
-      <a class="contact-row" href="https://maps.app.goo.gl/prqYx8FFvmqhViMv6" target="_blank"
-        style="text-decoration:none;">
+      <a class="contact-row" href="https://maps.app.goo.gl/prqYx8FFvmqhViMv6" target="_blank" rel="noopener noreferrer"
+        >
         <div class="contact-icon ci-loc">
           <svg viewBox="0 0 24 24" fill="none">
             <path
               d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5a2.5 2.5 0 1 1 0-5 2.5 2.5 0 0 1 0 5z"
-              fill="#dc2626" />
+              fill="currentColor" />
           </svg>
         </div>
         <div class="contact-info">
@@ -795,10 +422,10 @@
     </div>
 
     <!-- COMPANY CARD -->
-    <a href="https://imegroup.com.np" target="_blank">
+    <a class="company-link" href="https://imegroup.com.np" target="_blank" rel="noopener noreferrer" aria-label="Visit IME Group website">
       <div class="company-card">
         <!-- <div class="company-name">IME Group</div> -->
-        <img src="https://imegroup.com.np/wp-content/uploads/2023/01/logo-inverse.svg" alt="" style="max-height: 80px;">
+        <img src="https://imegroup.com.np/wp-content/uploads/2023/01/logo-inverse.svg" alt="IME Group — Pioneering Spirit">
         <!-- <div class="company-tagline">Pioneering Spirit</div> -->
       </div>
     </a>
@@ -833,15 +460,15 @@
 
     <!-- SOCIAL -->
     <div class="social-row">
-      <a class="social-icon" href="https://www.facebook.com/profile.php?id=61576093414927" target="_blank"
+      <a class="social-icon" href="https://www.facebook.com/profile.php?id=61576093414927" target="_blank" rel="noopener noreferrer"
         title="Facebook">
-        <svg viewBox="0 0 24 24" fill="#1877f2">
+        <svg viewBox="0 0 24 24" fill="currentColor">
           <path
             d="M24 12.073C24 5.405 18.627 0 12 0S0 5.405 0 12.073C0 18.1 4.388 23.094 10.125 24v-8.437H7.078v-3.49h3.047V9.41c0-3.025 1.792-4.697 4.533-4.697 1.312 0 2.686.235 2.686.235v2.97h-1.514c-1.491 0-1.956.93-1.956 1.886v2.269h3.328l-.532 3.49h-2.796V24C19.612 23.094 24 18.1 24 12.073z" />
         </svg>
       </a>
-      <a class="social-icon" href="https://www.linkedin.com/in/hem-raj-dhakal/" target="_blank" title="LinkedIn">
-        <svg viewBox="0 0 24 24" fill="#0a66c2">
+      <a class="social-icon" href="https://www.linkedin.com/in/hem-raj-dhakal/" target="_blank" rel="noopener noreferrer" title="LinkedIn">
+        <svg viewBox="0 0 24 24" fill="currentColor">
           <path
             d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
         </svg>
@@ -850,10 +477,12 @@
 
     <div class="footer-note">✦ Tap NFC card to share instantly</div>
 
+    </div>
+
   </div>
 
   <!-- QR MODAL -->
-  <div id="qr-modal" class="qr-overlay" onclick="if(event.target===this)closeQR()">
+  <div id="qr-modal" class="qr-overlay" role="dialog" aria-modal="true" aria-label="Business card QR code" onclick="if(event.target===this)closeQR()">
     <div class="qr-sheet">
       <div class="qr-handle"></div>
       <div class="qr-title">Scan to Connect</div>
@@ -896,6 +525,20 @@
   </div>
 
   <script>
+    async function sharePhone() {
+      const phone = '+977 9851023976';
+      if (navigator.share) {
+        try { await navigator.share({ title: 'Hem Raj Dhakal', text: phone }); } catch (error) {
+          if (error.name !== 'AbortError') console.error(error);
+        }
+      } else if (navigator.clipboard && window.isSecureContext) {
+        await navigator.clipboard.writeText(phone);
+        alert('Phone number copied!');
+      } else {
+        prompt('Copy phone number:', phone);
+      }
+    }
+
     function saveContact() {
       const vcard = `BEGIN:VCARD\nVERSION:3.0\nFN:Hem Raj Dhakal\nN:Dhakal;Hem Raj;;;\nORG:IME Group\nTITLE:Founder and Managing Director\nTEL;TYPE=CELL:+9779851023976\nEMAIL:ramu@imeholding.com\nURL:https://imegroup.com.np\nADR;TYPE=WORK:;;Kathmandu;;Nepal\nEND:VCARD`;
       const blob = new Blob([vcard], { type: 'text/vcard' });
@@ -915,8 +558,9 @@
           url: window.location.href
         });
       } else {
-        navigator.clipboard && navigator.clipboard.writeText(window.location.href);
-        alert('Link copied to clipboard!');
+        if (navigator.clipboard && window.isSecureContext) {
+          navigator.clipboard.writeText(window.location.href).then(() => alert('Link copied to clipboard!'));
+        } else { prompt('Copy card link:', window.location.href); }
       }
     }
 
@@ -938,7 +582,8 @@
           url: window.location.href
         });
       } else {
-        navigator.clipboard && navigator.clipboard.writeText(window.location.href);
+        if (!navigator.clipboard || !window.isSecureContext) { prompt('Copy card link:', window.location.href); return; }
+        navigator.clipboard.writeText(window.location.href);
         const btn = document.getElementById('qr-share-btn');
         const orig = btn.textContent;
         btn.textContent = 'Link Copied!';
